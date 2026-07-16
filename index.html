@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="kk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Шу темір жол колледжі — Шуский железнодорожный колледж</title>
-<meta name="description" content="Шу темір жол колледжі — техникалық және кәсіптік білім беру. Темір жол көлігі мамандықтары. Приём абитуриентов на базе 9 и 11 классов.">
+<title>Шу темір жол колледжі — теміржол саласының мамандықтары</title>
+<meta name="description" content="Шу темір жол колледжі — техникалық және кәсіптік білім беру. Темір жол көлігі мамандықтары. 9 және 11 сынып негізінде қабылдау.">
 <link rel="icon" href="img/logo.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +28,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
+html,body{overflow-x:hidden}
 body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4,.font-head{font-family:'Montserrat',sans-serif}
 img{display:block;max-width:100%}
@@ -49,16 +50,17 @@ a{color:inherit;text-decoration:none}
 
 /* ===== HEADER ===== */
 header{position:fixed;inset:0 0 auto 0;z-index:60;transition:.3s}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
 header.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(10px);box-shadow:0 6px 24px -16px rgba(10,42,94,.5)}
 .brand{display:flex;align-items:center;gap:13px;color:#fff;transition:.3s}
 .brand img{width:50px;height:50px;border-radius:50%;object-fit:cover;background:#fff;border:2px solid rgba(255,255,255,.6)}
 .brand b{font-family:'Montserrat';font-weight:800;font-size:1.02rem;line-height:1.15;display:block;letter-spacing:.01em}
 .brand span{font-size:.74rem;opacity:.82;letter-spacing:.04em}
+.brand b,.brand span span{white-space:nowrap}
 header.scrolled .brand{color:var(--navy)}
 header.scrolled .brand img{border-color:var(--line)}
-.menu{display:flex;align-items:center;gap:34px}
-.menu a{font-family:'Montserrat';font-weight:600;font-size:.92rem;color:rgba(255,255,255,.92);position:relative;transition:.2s}
+.menu{display:flex;align-items:center;gap:26px}
+.menu a{font-family:'Montserrat';font-weight:600;font-size:.92rem;color:rgba(255,255,255,.92);position:relative;transition:.2s;white-space:nowrap}
 .menu a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent);transition:.25s}
 .menu a:hover::after{width:100%}
 header.scrolled .menu a{color:var(--ink)}
@@ -66,6 +68,16 @@ header.scrolled .menu a{color:var(--ink)}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
 .burger span{width:26px;height:2.5px;background:#fff;border-radius:2px;transition:.3s}
 header.scrolled .burger span{background:var(--navy)}
+
+/* ===== LANG SWITCH ===== */
+.lang-switch{display:flex;gap:2px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:3px;flex:none}
+.lang-switch button{border:0;background:transparent;color:rgba(255,255,255,.85);font-family:'Montserrat';font-weight:700;font-size:.78rem;letter-spacing:.04em;padding:6px 13px;border-radius:999px;cursor:pointer;transition:.2s}
+.lang-switch button:hover{color:#fff}
+.lang-switch button.active{background:var(--accent);color:var(--navy-deep)}
+header.scrolled .lang-switch{background:#f0f5fc;border-color:var(--line)}
+header.scrolled .lang-switch button{color:var(--muted)}
+header.scrolled .lang-switch button:hover{color:var(--navy)}
+header.scrolled .lang-switch button.active{background:var(--accent);color:var(--navy-deep)}
 
 /* ===== HERO ===== */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;overflow:hidden}
@@ -228,6 +240,21 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
 .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
 
 /* ===== RESPONSIVE ===== */
+@media(max-width:1460px){
+  .brand span span{display:none}
+}
+@media(max-width:1280px){
+  .menu{position:fixed;inset:0 0 0 auto;width:min(320px,82%);background:var(--navy);flex-direction:column;justify-content:center;gap:26px;transform:translateX(105%);transition:.35s;box-shadow:-20px 0 50px rgba(0,0,0,.4);z-index:70}
+  .menu.open{transform:none}
+  .menu a{color:#fff;font-size:1.1rem}
+  .menu .nav-cta{margin-top:10px}
+  .burger{display:flex;z-index:80}
+  header.menu-open .burger span{background:#fff}
+  header.menu-open .burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  header.menu-open .burger span:nth-child(2){opacity:0}
+  header.menu-open .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+  .lang-switch{margin-left:auto}
+}
 @media(max-width:980px){
   .about,.info-doc,.ach-layout,.contact-layout{grid-template-columns:1fr}
   .info-doc .img{min-height:340px}
@@ -238,20 +265,21 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
 }
 @media(max-width:760px){
   .section{padding:64px 0}
-  .menu{position:fixed;inset:0 0 0 auto;width:min(320px,82%);background:var(--navy);flex-direction:column;justify-content:center;gap:26px;transform:translateX(105%);transition:.35s;box-shadow:-20px 0 50px rgba(0,0,0,.4);z-index:70}
-  .menu.open{transform:none}
-  .menu a{color:#fff;font-size:1.1rem}
-  .menu .nav-cta{margin-top:10px}
-  .burger{display:flex;z-index:80}
-  header.menu-open .burger span{background:#fff}
-  header.menu-open .burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
-  header.menu-open .burger span:nth-child(2){opacity:0}
-  header.menu-open .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+  .nav{gap:10px}
+  .btn{white-space:normal;text-align:center}
+  .contact-card{padding:28px 22px}
+  .brand span{display:none}
+  .lang-switch button{padding:5px 10px;font-size:.74rem}
   .hero-stats{gap:26px}
   .hero-stats .n{font-size:1.7rem}
   .info-doc .txt{padding:34px 28px}
   .foot-top{grid-template-columns:1fr;gap:28px}
   .about-media .badge{padding:16px 18px}
+}
+@media(max-width:480px){
+  .brand{gap:8px}
+  .brand b{white-space:normal;font-size:.84rem;max-width:135px;line-height:1.2}
+  .brand img{width:40px;height:40px}
 }
 @media(max-width:430px){
   .gallery-grid{grid-template-columns:1fr;grid-auto-rows:200px}
@@ -267,17 +295,21 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
   <div class="wrap nav">
     <a href="#home" class="brand">
       <img src="img/logo.jpeg" alt="Логотип колледжа">
-      <span><b>Шу темір жол колледжі</b><span>Шуский железнодорожный колледж</span></span>
+      <span><b>Шу темір жол колледжі</b><span data-i18n="brand.sub">Техникалық және кәсіптік білім беру</span></span>
     </a>
     <nav class="menu" id="menu">
-      <a href="#about">О колледже</a>
-      <a href="#professions">Специальности</a>
-      <a href="#advantages">Почему мы</a>
-      <a href="#partners">Партнёры</a>
-      <a href="#achievements">Достижения</a>
-      <a href="#gallery">Галерея</a>
-      <a href="#contacts" class="btn btn-primary nav-cta">Поступить</a>
+      <a href="#about" data-i18n="nav.about">Колледж туралы</a>
+      <a href="#professions" data-i18n="nav.prof">Мамандықтар</a>
+      <a href="#advantages" data-i18n="nav.adv">Артықшылықтар</a>
+      <a href="#partners" data-i18n="nav.partners">Серіктестер</a>
+      <a href="#achievements" data-i18n="nav.ach">Жетістіктер</a>
+      <a href="#gallery" data-i18n="nav.gallery">Галерея</a>
+      <a href="#contacts" class="btn btn-primary nav-cta" data-i18n="nav.cta">Оқуға түсу</a>
     </nav>
+    <div class="lang-switch" id="langSwitch" role="group" aria-label="Тіл / Язык">
+      <button type="button" data-lang="kz" class="active">ҚАЗ</button>
+      <button type="button" data-lang="ru">РУС</button>
+    </div>
     <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -287,45 +319,45 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
   <div class="hero-bg"><img src="img/hero.jpeg" alt="Студенты колледжа у локомотива"></div>
   <div class="wrap">
     <div class="hero-inner">
-      <span class="tag"><i></i>Приём 2026 · на базе 9 и 11 классов</span>
-      <h1>Будущее железных дорог <em>начинается здесь</em></h1>
-      <p class="sub">Шу темір жол колледжі — техникалық және кәсіптік білім беру саласындағы беделді оқу орны. Готовим квалифицированных, конкурентоспособных специалистов для железнодорожного транспорта Казахстана.</p>
-      <p class="ru">Государственная лицензия №KP00006513 · работаем с 2010 года · г. Шу</p>
+      <span class="tag"><i></i><span data-i18n="hero.tag">Қабылдау 2026 · 9 және 11 сынып негізінде</span></span>
+      <h1 data-i18n="hero.title">Темір жол болашағы <em>осы жерден басталады</em></h1>
+      <p class="sub" data-i18n="hero.sub">Шу темір жол колледжі — техникалық және кәсіптік білім беру саласындағы беделді оқу орны. Қазақстанның темір жол көлігіне білікті, бәсекеге қабілетті мамандар даярлаймыз.</p>
+      <p class="ru" data-i18n="hero.lic">Мемлекеттік лицензия №KP00006513 · 2010 жылдан бері · Шу қаласы</p>
       <div class="hero-actions">
-        <a href="#professions" class="btn btn-primary">Выбрать специальность
+        <a href="#professions" class="btn btn-primary"><span data-i18n="hero.btn1">Мамандық таңдау</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="#contacts" class="btn btn-ghost">Поступить</a>
+        <a href="#contacts" class="btn btn-ghost" data-i18n="hero.btn2">Оқуға түсу</a>
       </div>
       <div class="hero-stats">
-        <div><div class="n">5</div><div class="l">специальностей</div></div>
-        <div><div class="n">15+</div><div class="l">лет опыта</div></div>
-        <div><div class="n">8+</div><div class="l">предприятий-партнёров</div></div>
-        <div><div class="n">100%</div><div class="l">практика на производстве</div></div>
+        <div><div class="n">5</div><div class="l" data-i18n="stat.1">мамандық</div></div>
+        <div><div class="n">15+</div><div class="l" data-i18n="stat.2">жыл тәжірибе</div></div>
+        <div><div class="n">8+</div><div class="l" data-i18n="stat.3">серіктес кәсіпорын</div></div>
+        <div><div class="n">100%</div><div class="l" data-i18n="stat.4">өндірістік практика</div></div>
       </div>
     </div>
   </div>
-  <a href="#about" class="scroll-cue"><span class="mouse"></span>листайте</a>
+  <a href="#about" class="scroll-cue"><span class="mouse"></span><span data-i18n="hero.scroll">төменге</span></a>
 </section>
 
 <!-- ABOUT -->
 <section class="section" id="about">
   <div class="wrap about">
     <div class="about-text reveal">
-      <span class="eyebrow">О колледже</span>
-      <h2 style="font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:800;color:var(--navy);line-height:1.12;margin:14px 0 18px">Один из ведущих центров технического образования региона</h2>
-      <p class="lead">Шу темір жол колледжі работает с 2010 года и вносит значимый вклад в развитие транспортной инфраструктуры Казахстана, обучая квалифицированных специалистов железнодорожной отрасли.</p>
-      <p>Поскольку железнодорожные перевозки — ключевая транспортная отрасль страны, её развитие требует подготовленных кадров. <strong>Главная цель колледжа</strong> — подготовка квалифицированных и конкурентоспособных специалистов для железнодорожного транспорта и других технических направлений.</p>
-      <p>Для качественного обучения созданы все условия: современные учебные кабинеты, лаборатории и практические занятия формируют профессиональные навыки. Студенты проходят производственную практику и накапливают опыт, необходимый для будущей профессии.</p>
+      <span class="eyebrow" data-i18n="about.eyebrow">Колледж туралы</span>
+      <h2 style="font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:800;color:var(--navy);line-height:1.12;margin:14px 0 18px" data-i18n="about.h2">Өңірдегі техникалық білім берудің жетекші орталықтарының бірі</h2>
+      <p class="lead" data-i18n="about.lead">Шу темір жол колледжі 2010 жылдан бастап жұмыс істейді, темір жол саласына қажетті білікті мамандарды оқытып, Қазақстанның көлік инфрақұрылымының дамуына елеулі үлес қосып келеді.</p>
+      <p data-i18n="about.p2">Темір жол тасымалы елдің негізгі көлік саласы болғандықтан, оны дамыту үшін білікті мамандар қажет. <strong>Колледждің негізгі мақсаты</strong> — темір жол көлігі мен басқа да техникалық салаларға білікті, бәсекеге қабілетті мамандар даярлау.</p>
+      <p data-i18n="about.p3">Колледжде студенттердің сапалы білім алуына барлық жағдай жасалған: заманауи оқу кабинеттері, зертханалар және тәжірибелік сабақтар кәсіби дағдыларды қалыптастырады. Студенттер өндірістік тәжірибеден өтіп, болашақ мамандығына қажетті тәжірибе жинақтайды.</p>
       <div class="people">
-        <div class="person"><div class="role">Учредители</div><div class="name">Молдазимов Талғат Раушанұлы</div><div class="name">Абдукаримова Айткуль Қасымқызы</div></div>
-        <div class="person"><div class="role">Директор колледжа</div><div class="name">Тойлыбаев Нұрлан Сейсембайұлы</div><div class="role" style="color:var(--muted);margin-top:6px;text-transform:none;letter-spacing:0;font-weight:500">Награждён нагрудным знаком за заслуги перед Шуским районом</div></div>
+        <div class="person"><div class="role" data-i18n="about.founders">Құрылтайшылар</div><div class="name">Молдазимов Талғат Раушанұлы</div><div class="name">Абдукаримова Айткуль Қасымқызы</div></div>
+        <div class="person"><div class="role" data-i18n="about.director">Колледж директоры</div><div class="name">Тойлыбаев Нұрлан Сейсембайұлы</div><div class="role" style="color:var(--muted);margin-top:6px;text-transform:none;letter-spacing:0;font-weight:500" data-i18n="about.award">Шу ауданына сіңірген еңбегі үшін төс белгісімен марапатталған</div></div>
       </div>
     </div>
     <div class="about-media reveal d2">
       <div class="frame"><img src="img/g4.jpeg" alt="Учебный кабинет колледжа"></div>
-      <div class="ribbon">с 2010 года</div>
-      <div class="badge"><b>5</b><span>специальностей<br>обучения</span></div>
+      <div class="ribbon" data-i18n="about.ribbon">2010 жылдан бері</div>
+      <div class="badge"><b>5</b><span data-i18n="about.badge">мамандық<br>бойынша оқыту</span></div>
     </div>
   </div>
 </section>
@@ -334,9 +366,9 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
 <section class="section" id="professions">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Специальности</span>
-      <h2>Колледж ведёт обучение по 5 специальностям</h2>
-      <p>Дневная форма обучения на базе 9 и 11 классов. Государственный диплом и востребованная квалификация по окончании.</p>
+      <span class="eyebrow" data-i18n="prof.eyebrow">Мамандықтар</span>
+      <h2 data-i18n="prof.h2">Колледж 5 мамандық бойынша білім береді</h2>
+      <p data-i18n="prof.p">9 және 11 сынып негізінде күндізгі оқу. Бітірген соң — мемлекеттік диплом мен сұранысқа ие біліктілік.</p>
     </div>
     <div class="prof-grid">
 
@@ -344,13 +376,13 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
       <article class="prof-card reveal">
         <div class="prof-photo"><span class="code">07160500</span><img src="img/prof-rolling.jpeg" alt="Подвижной состав железных дорог"></div>
         <div class="prof-body">
-          <h3>Эксплуатация, ремонт и техническое обслуживание тягового подвижного состава железных дорог</h3>
+          <h3 data-i18n="prof1.h3">Темір жолдың жылжымалы құрамын пайдалану, жөндеу және техникалық қызмет көрсету</h3>
           <ul class="prof-meta">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span><b>Форма обучения:</b> дневная</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span><b>Срок обучения:</b></span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="prof.form"><b>Оқу нысаны:</b> күндізгі</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span data-i18n="prof.term"><b>Оқу мерзімі:</b></span></li>
           </ul>
-          <div class="terms" style="margin:-6px 0 16px"><span class="pill">9 класс — 3 г. 10 мес.</span><span class="pill">11 класс — 2 г. 10 мес.</span></div>
-          <div class="qual"><div class="lbl">Квалификация · 4S07160503</div><div class="val">Техник-электромеханик</div></div>
+          <div class="terms" style="margin:-6px 0 16px"><span class="pill" data-i18n="term.9-3">9 сынып — 3 ж. 10 ай</span><span class="pill" data-i18n="term.11-2">11 сынып — 2 ж. 10 ай</span></div>
+          <div class="qual"><div class="lbl"><span data-i18n="qual.lbl">Біліктілік</span> · 4S07160503</div><div class="val" data-i18n="qual1.val">Техник-электромеханик</div></div>
         </div>
       </article>
 
@@ -358,13 +390,13 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
       <article class="prof-card reveal d1">
         <div class="prof-photo"><span class="code">06130100</span><img src="img/prof-soft.jpeg" alt="Кабинет программирования"></div>
         <div class="prof-body">
-          <h3>Программное обеспечение (по видам)</h3>
+          <h3 data-i18n="prof2.h3">Бағдарламалық қамтамасыз ету (түрлері бойынша)</h3>
           <ul class="prof-meta">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span><b>Форма обучения:</b> дневная</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span><b>Срок обучения:</b></span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="prof.form"><b>Оқу нысаны:</b> күндізгі</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span data-i18n="prof.term"><b>Оқу мерзімі:</b></span></li>
           </ul>
-          <div class="terms" style="margin:-6px 0 16px"><span class="pill">9 класс — 3 г. 10 мес.</span><span class="pill">11 класс — 2 г. 10 мес.</span></div>
-          <div class="qual"><div class="lbl">Квалификация · 4S06130103</div><div class="val">Разработчик программного обеспечения</div></div>
+          <div class="terms" style="margin:-6px 0 16px"><span class="pill" data-i18n="term.9-3">9 сынып — 3 ж. 10 ай</span><span class="pill" data-i18n="term.11-2">11 сынып — 2 ж. 10 ай</span></div>
+          <div class="qual"><div class="lbl"><span data-i18n="qual.lbl">Біліктілік</span> · 4S06130103</div><div class="val" data-i18n="qual2.val">Бағдарламалық қамтамасыз етуді әзірлеуші</div></div>
         </div>
       </article>
 
@@ -372,13 +404,13 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
       <article class="prof-card reveal d2">
         <div class="prof-photo"><span class="code">07140700</span><img src="img/prof-auto.jpeg" alt="Автоматика и телемеханика"></div>
         <div class="prof-body">
-          <h3>Автоматика, телемеханика и управление движением на железнодорожном транспорте</h3>
+          <h3 data-i18n="prof3.h3">Автоматика, телемеханика және темір жол көлігіндегі қозғалысты басқару</h3>
           <ul class="prof-meta">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span><b>Форма обучения:</b> дневная</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span><b>Срок обучения:</b></span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="prof.form"><b>Оқу нысаны:</b> күндізгі</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span data-i18n="prof.term"><b>Оқу мерзімі:</b></span></li>
           </ul>
-          <div class="terms" style="margin:-6px 0 16px"><span class="pill">9 класс — 3 г. 10 мес.</span><span class="pill">11 класс — 2 г. 10 мес.</span></div>
-          <div class="qual"><div class="lbl">Квалификация · 4S07140703</div><div class="val">Техник-электромеханик</div></div>
+          <div class="terms" style="margin:-6px 0 16px"><span class="pill" data-i18n="term.9-3">9 сынып — 3 ж. 10 ай</span><span class="pill" data-i18n="term.11-2">11 сынып — 2 ж. 10 ай</span></div>
+          <div class="qual"><div class="lbl"><span data-i18n="qual.lbl">Біліктілік</span> · 4S07140703</div><div class="val" data-i18n="qual1.val">Техник-электромеханик</div></div>
         </div>
       </article>
 
@@ -386,13 +418,13 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
       <article class="prof-card reveal">
         <div class="prof-photo"><span class="code">07150500</span><img src="img/prof-weld.jpeg" alt="Сварочное дело"></div>
         <div class="prof-body">
-          <h3>Сварочное дело (по видам)</h3>
+          <h3 data-i18n="prof4.h3">Дәнекерлеу ісі (түрлері бойынша)</h3>
           <ul class="prof-meta">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span><b>Форма обучения:</b> дневная</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span><b>Срок обучения:</b></span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="prof.form"><b>Оқу нысаны:</b> күндізгі</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span data-i18n="prof.term"><b>Оқу мерзімі:</b></span></li>
           </ul>
-          <div class="terms" style="margin:-6px 0 16px"><span class="pill">9 класс — 2 г. 10 мес.</span><span class="pill">11 класс — 1 г. 10 мес.</span></div>
-          <div class="qual"><div class="lbl">Квалификация · 3W07150501</div><div class="val">Электрогазосварщик</div></div>
+          <div class="terms" style="margin:-6px 0 16px"><span class="pill" data-i18n="term.9-2">9 сынып — 2 ж. 10 ай</span><span class="pill" data-i18n="term.11-1">11 сынып — 1 ж. 10 ай</span></div>
+          <div class="qual"><div class="lbl"><span data-i18n="qual.lbl">Біліктілік</span> · 3W07150501</div><div class="val" data-i18n="qual4.val">Электргазбен дәнекерлеуші</div></div>
         </div>
       </article>
 
@@ -400,22 +432,22 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
       <article class="prof-card reveal d1">
         <div class="prof-photo"><span class="code">07130100</span><img src="img/prof-electro.jpeg" alt="Электрооборудование"></div>
         <div class="prof-body">
-          <h3>Электрооборудование (по видам и отраслям)</h3>
+          <h3 data-i18n="prof5.h3">Электр жабдықтары (түрлері мен салалары бойынша)</h3>
           <ul class="prof-meta">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span><b>Форма обучения:</b> дневная</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span><b>Срок обучения:</b></span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="prof.form"><b>Оқу нысаны:</b> күндізгі</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span data-i18n="prof.term"><b>Оқу мерзімі:</b></span></li>
           </ul>
-          <div class="terms" style="margin:-6px 0 16px"><span class="pill">9 класс — 2 г. 10 мес.</span><span class="pill">11 класс — 1 г. 10 мес.</span></div>
-          <div class="qual"><div class="lbl">Квалификация · 3W07130101</div><div class="val">Электромонтёр (по видам и отраслям)</div></div>
+          <div class="terms" style="margin:-6px 0 16px"><span class="pill" data-i18n="term.9-2">9 сынып — 2 ж. 10 ай</span><span class="pill" data-i18n="term.11-1">11 сынып — 1 ж. 10 ай</span></div>
+          <div class="qual"><div class="lbl"><span data-i18n="qual.lbl">Біліктілік</span> · 3W07130101</div><div class="val" data-i18n="qual5.val">Электр монтёрі (түрлері мен салалары бойынша)</div></div>
         </div>
       </article>
 
       <!-- summary card -->
       <article class="prof-card reveal d2" style="background:var(--navy);color:#fff;justify-content:center;align-items:flex-start;padding:34px 30px;border:0">
-        <span class="eyebrow" style="color:var(--accent)">Уважаемый абитуриент</span>
-        <h3 style="color:#fff;font-size:1.35rem;margin:14px 0 12px;line-height:1.3">Выбирай профессию, которая всегда востребована</h3>
-        <p style="opacity:.85;font-size:.95rem;margin-bottom:22px">Все специальности — с гарантированной практикой на ведущих предприятиях отрасли и реальной перспективой трудоустройства.</p>
-        <a href="#contacts" class="btn btn-primary" style="font-size:.9rem;padding:12px 24px">Подать документы</a>
+        <span class="eyebrow" style="color:var(--accent)" data-i18n="prof.sum.eyebrow">Құрметті талапкер</span>
+        <h3 style="color:#fff;font-size:1.35rem;margin:14px 0 12px;line-height:1.3" data-i18n="prof.sum.h3">Әрқашан сұранысқа ие мамандықты таңда</h3>
+        <p style="opacity:.85;font-size:.95rem;margin-bottom:22px" data-i18n="prof.sum.p">Барлық мамандықтар бойынша саланың жетекші кәсіпорындарында кепілдендірілген практика мен жұмысқа орналасудың нақты мүмкіндігі бар.</p>
+        <a href="#contacts" class="btn btn-primary" style="font-size:.9rem;padding:12px 24px" data-i18n="prof.sum.btn">Құжат тапсыру</a>
       </article>
 
     </div>
@@ -423,10 +455,10 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
     <!-- Original info document -->
     <div class="info-doc reveal">
       <div class="txt">
-        <span class="eyebrow" style="color:var(--accent)">Официальная информация</span>
-        <h3 style="margin-top:14px">Перечень специальностей и квалификаций</h3>
-        <p>Полный официальный список специальностей колледжа с кодами, формами и нормативными сроками обучения — как в приёмной документации для абитуриентов.</p>
-        <a href="img/professions-info.jpeg" target="_blank" class="btn btn-ghost" style="border-color:rgba(255,255,255,.5)">Открыть полный документ
+        <span class="eyebrow" style="color:var(--accent)" data-i18n="doc.eyebrow">Ресми ақпарат</span>
+        <h3 style="margin-top:14px" data-i18n="doc.h3">Мамандықтар мен біліктіліктер тізбесі</h3>
+        <p data-i18n="doc.p">Колледж мамандықтарының кодтары, оқу нысандары мен нормативтік мерзімдері көрсетілген толық ресми тізім — талапкерлерге арналған қабылдау құжаттамасындағыдай.</p>
+        <a href="img/professions-info.jpeg" target="_blank" class="btn btn-ghost" style="border-color:rgba(255,255,255,.5)"><span data-i18n="doc.btn">Толық құжатты ашу</span>
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
       </div>
@@ -439,30 +471,30 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
 <section class="section" id="advantages">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Почему мы</span>
-      <h2>Преимущества обучения в колледже</h2>
-      <p>В рамках государственной инициативы «Год рабочих профессий» колледж усиливает подготовку кадров и взаимодействие с работодателями.</p>
+      <span class="eyebrow" data-i18n="adv.eyebrow">Артықшылықтар</span>
+      <h2 data-i18n="adv.h2">Колледжде оқудың артықшылықтары</h2>
+      <p data-i18n="adv.p">«Жұмысшы мамандықтар жылы» мемлекеттік бастамасы аясында колледж кадрлар даярлауды және жұмыс берушілермен өзара іс-қимылды күшейтуде.</p>
     </div>
     <div class="adv-grid">
       <div class="adv reveal">
         <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-4 10 4-10 4z"/><path d="M6 10v5c0 1 2.5 3 6 3s6-2 6-3v-5"/></svg></div>
-        <h3>Дуальное обучение</h3>
-        <p>Расширяем формат дуального обучения — профессиональная подготовка студентов проходит на крупных производственных площадках.</p>
+        <h3 data-i18n="adv1.h3">Дуалды оқыту</h3>
+        <p data-i18n="adv1.p">Дуалды оқыту ауқымын кеңейтудеміз — студенттердің кәсіби дайындығы ірі өндіріс ошақтарында өтеді.</p>
       </div>
       <div class="adv reveal d1">
         <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3>Опытные наставники</h3>
-        <p>Современные кабинеты и лаборатории, практические занятия и производственная практика формируют реальные профессиональные навыки.</p>
+        <h3 data-i18n="adv2.h3">Тәжірибелі ұстаздар</h3>
+        <p data-i18n="adv2.p">Заманауи кабинеттер мен зертханалар, тәжірибелік сабақтар және өндірістік практика нағыз кәсіби дағдыларды қалыптастырады.</p>
       </div>
       <div class="adv reveal d2">
         <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9M14 17H5M17 3l3 4-3 4M7 13l-3 4 3 4"/></svg></div>
-        <h3>Связь с производством</h3>
-        <p>Меморандумы с ведущими предприятиями отрасли. Студенты соединяют теорию с практикой и оттачивают мастерство.</p>
+        <h3 data-i18n="adv3.h3">Өндіріспен байланыс</h3>
+        <p data-i18n="adv3.p">Саланың жетекші кәсіпорындарымен меморандумдар жасалған. Студенттер теорияны тәжірибемен ұштастырып, шеберліктерін шыңдайды.</p>
       </div>
       <div class="adv reveal d3">
         <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></div>
-        <h3>Трудоустройство</h3>
-        <p>Партнёрство с предприятиями открывает путь к стабильному трудоустройству выпускников по полученной специальности.</p>
+        <h3 data-i18n="adv4.h3">Жұмысқа орналасу</h3>
+        <p data-i18n="adv4.p">Кәсіпорындармен серіктестік түлектердің алған мамандығы бойынша тұрақты жұмысқа орналасуына жол ашады.</p>
       </div>
     </div>
   </div>
@@ -472,19 +504,19 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
 <section class="section" id="partners">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Партнёры колледжа</span>
-      <h2>Где наши студенты проходят практику</h2>
-      <p>С этими предприятиями заключены меморандумы о сотрудничестве — студенты закрепляют теорию на реальном производстве.</p>
+      <span class="eyebrow" data-i18n="part.eyebrow">Колледж серіктестері</span>
+      <h2 data-i18n="part.h2">Студенттеріміз практикадан өтетін орындар</h2>
+      <p data-i18n="part.p">Осы кәсіпорындармен ынтымақтастық туралы меморандумдар жасалған — студенттер теорияны нақты өндірісте бекітеді.</p>
     </div>
     <div class="partner-grid">
-      <div class="partner reveal"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M8 21h8M9 7h6M9 11h6"/></svg></span><span>Шуский локомотиворемонтный завод «Қамқор локомотив» ЖШС</span></div>
-      <div class="partner reveal d1"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20v-3M18 20v-3M4 9l8-5 8 5"/></svg></span><span>Шуская дистанция сигнализации и связи</span></div>
-      <div class="partner reveal d2"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span><span>Шуская электродистанция</span></div>
-      <div class="partner reveal"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="11" rx="1"/><path d="M16 9h4l3 3v5h-7zM5.5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18.5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg></span><span>Вагонное депо эксплуатации № 27</span></div>
-      <div class="partner reveal d1"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="11" rx="1"/><path d="M16 9h4l3 3v5h-7zM5.5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18.5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg></span><span>«Автожүккөлік» ЖШС</span></div>
-      <div class="partner reveal d2"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v6L4 18a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3L14 8V2"/><path d="M8 2h8"/></svg></span><span>«ХИМ-плюс» ЖШС</span></div>
-      <div class="partner reveal"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 12h16M12 4v16"/></svg></span><span>ALSTOM — «ЭКЗ Сервис» ЖШС</span></div>
-      <div class="partner reveal d1" style="background:rgba(246,178,27,.12);border-color:rgba(246,178,27,.3)"><span class="dot" style="background:var(--accent);color:var(--navy-deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span><span style="color:var(--accent);font-weight:700">Постоянно расширяем число партнёров</span></div>
+      <div class="partner reveal"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M8 21h8M9 7h6M9 11h6"/></svg></span><span data-i18n="part.1">Шу локомотив жөндеу зауыты — «Қамқор локомотив» ЖШС</span></div>
+      <div class="partner reveal d1"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20v-3M18 20v-3M4 9l8-5 8 5"/></svg></span><span data-i18n="part.2">Шу байланыс белгі беру дистанциясы</span></div>
+      <div class="partner reveal d2"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span><span data-i18n="part.3">Шу электродистанциясы</span></div>
+      <div class="partner reveal"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="11" rx="1"/><path d="M16 9h4l3 3v5h-7zM5.5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18.5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg></span><span data-i18n="part.4">№ 27 пайдалану вагон депосы</span></div>
+      <div class="partner reveal d1"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="11" rx="1"/><path d="M16 9h4l3 3v5h-7zM5.5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18.5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg></span><span data-i18n="part.5">«Автожүккөлік» ЖШС</span></div>
+      <div class="partner reveal d2"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v6L4 18a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3L14 8V2"/><path d="M8 2h8"/></svg></span><span data-i18n="part.6">«ХИМ-плюс» ЖШС</span></div>
+      <div class="partner reveal"><span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 12h16M12 4v16"/></svg></span><span data-i18n="part.7">ALSTOM — «ЭКЗ Сервис» ЖШС</span></div>
+      <div class="partner reveal d1" style="background:rgba(246,178,27,.12);border-color:rgba(246,178,27,.3)"><span class="dot" style="background:var(--accent);color:var(--navy-deep)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span><span style="color:var(--accent);font-weight:700" data-i18n="part.8">Серіктестер қатарын үнемі кеңейтудеміз</span></div>
     </div>
   </div>
 </section>
@@ -493,31 +525,31 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
 <section class="section" id="achievements">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Достижения</span>
-      <h2>Наши студенты — призёры профессиональных чемпионатов</h2>
-      <p>Победы на областных и республиканских конкурсах профессионального мастерства WorldSkills, TEMIRSKILLS и Profi.</p>
+      <span class="eyebrow" data-i18n="ach.eyebrow">Жетістіктер</span>
+      <h2 data-i18n="ach.h2">Студенттеріміз — кәсіби чемпионаттардың жүлдегерлері</h2>
+      <p data-i18n="ach.p">WorldSkills, TEMIRSKILLS және Profi облыстық және республикалық кәсіби шеберлік байқауларындағы жеңістер.</p>
     </div>
     <div class="ach-layout">
       <div class="timeline">
         <div class="tl-item reveal">
-          <span class="yr">WorldSkills · 2025 · область</span>
-          <h4>Сварочное дело и электрооборудование</h4>
-          <p>Участники по «Сварочному делу» — <b>Щевцов Владислав</b>, <b>Сейткерім Ерасыл</b>. По «Электрооборудованию» <b>Ларионов Сергей</b> — <b>III место</b>.</p>
+          <span class="yr" data-i18n="ach1.yr">WorldSkills · 2025 · облыс</span>
+          <h4 data-i18n="ach1.h4">Дәнекерлеу ісі және электр жабдықтары</h4>
+          <p data-i18n="ach1.p">«Дәнекерлеу ісі» бойынша қатысушылар — <b>Щевцов Владислав</b>, <b>Сейткерім Ерасыл</b>. «Электр жабдықтары» бойынша <b>Ларионов Сергей</b> — <b>ІІІ орын</b>.</p>
         </div>
         <div class="tl-item reveal d1">
-          <span class="yr">TEMIRSKILLS · 2025 · область</span>
-          <h4>Конкурс среди студентов 1–2 курсов</h4>
-          <p>По специальности «Сварочное дело» участвовал <b>Попович Илья</b>.</p>
+          <span class="yr" data-i18n="ach2.yr">TEMIRSKILLS · 2025 · облыс</span>
+          <h4 data-i18n="ach2.h4">1–2 курс студенттері арасындағы байқау</h4>
+          <p data-i18n="ach2.p">«Дәнекерлеу ісі» мамандығы бойынша <b>Попович Илья</b> қатысты.</p>
         </div>
         <div class="tl-item reveal d2">
-          <span class="yr">Profi · 2026</span>
-          <h4>Два первых места колледжа</h4>
-          <p>«Сварочное дело» — <b>Попович Илья, I место</b>. «Электрооборудование» — <b>Атаев Мадияр, I место</b>.</p>
+          <span class="yr" data-i18n="ach3.yr">Profi · 2026</span>
+          <h4 data-i18n="ach3.h4">Колледждің екі бірінші орны</h4>
+          <p data-i18n="ach3.p">«Дәнекерлеу ісі» — <b>Попович Илья, І орын</b>. «Электр жабдықтары» — <b>Атаев Мадияр, І орын</b>.</p>
         </div>
         <div class="tl-item reveal d3">
-          <span class="yr">WorldSkills Jambyl · 2026 · область</span>
-          <h4>Награды чемпионата</h4>
-          <p>«Управление ж/д локомотивом» — <b>Дихан Азатбек</b>, <b>Батырхан Әкежан</b>; II место — <b>Жансерік Адембек</b>, <b>Парбузин Сергей</b>. «Электромонтажные работы» — <b>Атаев Мадияр</b>. «Технологии сварки» — <b>Попович Илья</b>. За вклад в организацию — <b>Қаламбек Жанерке</b>.</p>
+          <span class="yr" data-i18n="ach4.yr">WorldSkills Jambyl · 2026 · облыс</span>
+          <h4 data-i18n="ach4.h4">Чемпионат марапаттары</h4>
+          <p data-i18n="ach4.p">«Теміржол локомотивін басқару» — <b>Дихан Азатбек</b>, <b>Батырхан Әкежан</b>; ІІ орын — <b>Жансерік Адембек</b>, <b>Парбузин Сергей</b>. «Электромонтаж жұмыстары» — <b>Атаев Мадияр</b>. «Дәнекерлеу технологиялары» — <b>Попович Илья</b>. Ұйымдастыруға қосқан үлесі үшін — <b>Қаламбек Жанерке</b>.</p>
         </div>
       </div>
       <div class="ach-photos reveal d1">
@@ -533,9 +565,9 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
 <section class="section" id="gallery">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Галерея</span>
-      <h2>Жизнь и практика в колледже</h2>
-      <p>Производственная практика, учебные занятия и работа на реальных объектах железной дороги.</p>
+      <span class="eyebrow" data-i18n="gal.eyebrow">Галерея</span>
+      <h2 data-i18n="gal.h2">Колледждегі өмір мен практика</h2>
+      <p data-i18n="gal.p">Өндірістік практика, оқу сабақтары және темір жолдың нақты нысандарындағы жұмыс.</p>
     </div>
     <div class="gallery-grid reveal">
       <figure class="g-big"><img src="img/g1.jpeg" alt="Студенты на путях"></figure>
@@ -555,29 +587,29 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
   <div class="cta-bg"><img src="img/cta.jpeg" alt="Колледж"></div>
   <div class="wrap contact-layout">
     <div class="contact-intro">
-      <span class="eyebrow">Приём абитуриентов</span>
-      <h2>Стань частью <em>Шу темір жол колледжі</em></h2>
-      <p>Уважаемый абитуриент! Приходи учиться востребованной профессии. Приём ведётся на базе 9 и 11 классов на дневную форму обучения.</p>
+      <span class="eyebrow" data-i18n="cta.eyebrow">Талапкерлерді қабылдау</span>
+      <h2 data-i18n="cta.h2"><em>Шу темір жол колледжінің</em> бір бөлігі бол</h2>
+      <p data-i18n="cta.p">Құрметті талапкер! Сұранысқа ие мамандықты меңгеруге кел. Қабылдау 9 және 11 сынып негізінде күндізгі оқу нысанына жүргізіледі.</p>
       <div class="admission-note reveal">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        <div><b>На базе 9 классов</b> — полное среднее + специальность<br><span style="opacity:.85;font-size:.92rem">На базе 11 классов — ускоренные сроки обучения</span></div>
+        <div data-i18n="cta.note1"><b>9 сынып негізінде</b> — толық орта білім + мамандық<br><span style="opacity:.85;font-size:.92rem">11 сынып негізінде — жеделдетілген оқу мерзімі</span></div>
       </div>
       <div class="admission-note reveal d1">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
-        <div><b>Государственный диплом</b><br><span style="opacity:.85;font-size:.92rem">Лицензия №KP00006513</span></div>
+        <div data-i18n="cta.note2"><b>Мемлекеттік диплом</b><br><span style="opacity:.85;font-size:.92rem">Лицензия №KP00006513</span></div>
       </div>
     </div>
 
     <div class="contact-card reveal d1">
-      <h3>Контакты приёмной комиссии</h3>
-      <div class="lic">г. Шу · Государственная лицензия №KP00006513</div>
+      <h3 data-i18n="cc.h3">Қабылдау комиссиясының байланыстары</h3>
+      <div class="lic" data-i18n="cc.lic">Шу қаласы · Мемлекеттік лицензия №KP00006513</div>
       <div class="c-row">
         <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-        <div><div class="k">Адрес</div><div class="v">г. Шу, ул. Автобазовская, №2Б</div></div>
+        <div><div class="k" data-i18n="cc.addr.k">Мекенжай</div><div class="v" data-i18n="cc.addr.v">Шу қаласы, Автобазовская көшесі, №2Б</div></div>
       </div>
       <div class="c-row">
         <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-        <div><div class="k">Телефоны</div><div class="v"><a href="tel:+77243256008">8 (7243) 2-56-08</a><br><a href="tel:+77475507278">8 747 550 7278</a> · <a href="tel:+77479285991">8 747 928 5991</a></div></div>
+        <div><div class="k" data-i18n="cc.tel.k">Телефондар</div><div class="v"><a href="tel:+77243256008">8 (7243) 2-56-08</a><br><a href="tel:+77475507278">8 747 550 7278</a> · <a href="tel:+77479285991">8 747 928 5991</a></div></div>
       </div>
       <div class="c-row">
         <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
@@ -585,9 +617,9 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
       </div>
       <div class="c-row">
         <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20z"/></svg></span>
-        <div><div class="k">Сайт · Instagram</div><div class="v">jdkolledj.kz · <a href="https://instagram.com/shu_jdkolledj" target="_blank">@shu_jdkolledj</a></div></div>
+        <div><div class="k" data-i18n="cc.site.k">Сайт · Instagram</div><div class="v">shu-jdkolledj.kz · <a href="https://instagram.com/shu_jdkolledj" target="_blank">@shu_jdkolledj</a></div></div>
       </div>
-      <a href="tel:+77243256008" class="btn btn-primary">Позвонить в приёмную комиссию</a>
+      <a href="tel:+77243256008" class="btn btn-primary" data-i18n="cc.btn">Қабылдау комиссиясына қоңырау шалу</a>
     </div>
   </div>
 </section>
@@ -599,39 +631,179 @@ footer{background:#04132e;color:rgba(255,255,255,.7);padding:54px 0 30px}
       <div class="foot-col">
         <div class="foot-brand">
           <img src="img/logo.jpeg" alt="Логотип">
-          <span><b>Шу темір жол колледжі</b><span>Шуский железнодорожный колледж</span></span>
+          <span><b>Шу темір жол колледжі</b><span data-i18n="brand.sub">Техникалық және кәсіптік білім беру</span></span>
         </div>
-        <p>Подготовка квалифицированных и конкурентоспособных специалистов для железнодорожного транспорта Казахстана с 2010 года.</p>
+        <p data-i18n="foot.p">2010 жылдан бері Қазақстанның темір жол көлігіне білікті, бәсекеге қабілетті мамандар даярлаймыз.</p>
       </div>
       <div class="foot-col">
-        <h4>Навигация</h4>
+        <h4 data-i18n="foot.nav">Бөлімдер</h4>
         <ul>
-          <li><a href="#about">О колледже</a></li>
-          <li><a href="#professions">Специальности</a></li>
-          <li><a href="#partners">Партнёры</a></li>
-          <li><a href="#achievements">Достижения</a></li>
-          <li><a href="#gallery">Галерея</a></li>
+          <li><a href="#about" data-i18n="nav.about">Колледж туралы</a></li>
+          <li><a href="#professions" data-i18n="nav.prof">Мамандықтар</a></li>
+          <li><a href="#partners" data-i18n="nav.partners">Серіктестер</a></li>
+          <li><a href="#achievements" data-i18n="nav.ach">Жетістіктер</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">Галерея</a></li>
         </ul>
       </div>
       <div class="foot-col">
-        <h4>Контакты</h4>
+        <h4 data-i18n="foot.contacts">Байланыс</h4>
         <ul>
-          <li>г. Шу, ул. Автобазовская, №2Б</li>
+          <li data-i18n="cc.addr.v">Шу қаласы, Автобазовская көшесі, №2Б</li>
           <li><a href="tel:+77243256008">8 (7243) 2-56-08</a></li>
           <li><a href="mailto:jdkolledj@mail.ru">jdkolledj@mail.ru</a></li>
           <li><a href="https://instagram.com/shu_jdkolledj" target="_blank">Instagram: @shu_jdkolledj</a></li>
-          <li>Сайт: jdkolledj.kz</li>
+          <li>shu-jdkolledj.kz</li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Шу темір жол колледжі. Все права защищены.</span>
-      <span>Государственная лицензия №KP00006513</span>
+      <span data-i18n="foot.copy">© 2026 Шу темір жол колледжі. Барлық құқықтар қорғалған.</span>
+      <span data-i18n="foot.lic">Мемлекеттік лицензия №KP00006513</span>
     </div>
   </div>
 </footer>
 
 <script>
+// ===== i18n =====
+// Each key: [kazakh, russian]
+const T={
+'meta.title':['Шу темір жол колледжі — теміржол саласының мамандықтары','Шу темір жол колледжі — Шуский железнодорожный колледж'],
+'meta.desc':['Шу темір жол колледжі — техникалық және кәсіптік білім беру. Темір жол көлігі мамандықтары. 9 және 11 сынып негізінде қабылдау.','Шу темір жол колледжі — техническое и профессиональное образование. Специальности железнодорожного транспорта. Приём на базе 9 и 11 классов.'],
+'brand.sub':['Техникалық және кәсіптік білім беру','Шуский железнодорожный колледж'],
+'nav.about':['Колледж туралы','О колледже'],
+'nav.prof':['Мамандықтар','Специальности'],
+'nav.adv':['Артықшылықтар','Почему мы'],
+'nav.partners':['Серіктестер','Партнёры'],
+'nav.ach':['Жетістіктер','Достижения'],
+'nav.gallery':['Галерея','Галерея'],
+'nav.cta':['Оқуға түсу','Поступить'],
+'hero.tag':['Қабылдау 2026 · 9 және 11 сынып негізінде','Приём 2026 · на базе 9 и 11 классов'],
+'hero.title':['Темір жол болашағы <em>осы жерден басталады</em>','Будущее железных дорог <em>начинается здесь</em>'],
+'hero.sub':['Шу темір жол колледжі — техникалық және кәсіптік білім беру саласындағы беделді оқу орны. Қазақстанның темір жол көлігіне білікті, бәсекеге қабілетті мамандар даярлаймыз.','Шу темір жол колледжі — авторитетное учебное заведение технического и профессионального образования. Готовим квалифицированных, конкурентоспособных специалистов для железнодорожного транспорта Казахстана.'],
+'hero.lic':['Мемлекеттік лицензия №KP00006513 · 2010 жылдан бері · Шу қаласы','Государственная лицензия №KP00006513 · работаем с 2010 года · г. Шу'],
+'hero.btn1':['Мамандық таңдау','Выбрать специальность'],
+'hero.btn2':['Оқуға түсу','Поступить'],
+'stat.1':['мамандық','специальностей'],
+'stat.2':['жыл тәжірибе','лет опыта'],
+'stat.3':['серіктес кәсіпорын','предприятий-партнёров'],
+'stat.4':['өндірістік практика','практика на производстве'],
+'hero.scroll':['төменге','листайте'],
+'about.eyebrow':['Колледж туралы','О колледже'],
+'about.h2':['Өңірдегі техникалық білім берудің жетекші орталықтарының бірі','Один из ведущих центров технического образования региона'],
+'about.lead':['Шу темір жол колледжі 2010 жылдан бастап жұмыс істейді, темір жол саласына қажетті білікті мамандарды оқытып, Қазақстанның көлік инфрақұрылымының дамуына елеулі үлес қосып келеді.','Шу темір жол колледжі работает с 2010 года и вносит значимый вклад в развитие транспортной инфраструктуры Казахстана, обучая квалифицированных специалистов железнодорожной отрасли.'],
+'about.p2':['Темір жол тасымалы елдің негізгі көлік саласы болғандықтан, оны дамыту үшін білікті мамандар қажет. <strong>Колледждің негізгі мақсаты</strong> — темір жол көлігі мен басқа да техникалық салаларға білікті, бәсекеге қабілетті мамандар даярлау.','Поскольку железнодорожные перевозки — ключевая транспортная отрасль страны, её развитие требует подготовленных кадров. <strong>Главная цель колледжа</strong> — подготовка квалифицированных и конкурентоспособных специалистов для железнодорожного транспорта и других технических направлений.'],
+'about.p3':['Колледжде студенттердің сапалы білім алуына барлық жағдай жасалған: заманауи оқу кабинеттері, зертханалар және тәжірибелік сабақтар кәсіби дағдыларды қалыптастырады. Студенттер өндірістік тәжірибеден өтіп, болашақ мамандығына қажетті тәжірибе жинақтайды.','Для качественного обучения созданы все условия: современные учебные кабинеты, лаборатории и практические занятия формируют профессиональные навыки. Студенты проходят производственную практику и накапливают опыт, необходимый для будущей профессии.'],
+'about.founders':['Құрылтайшылар','Учредители'],
+'about.director':['Колледж директоры','Директор колледжа'],
+'about.award':['Шу ауданына сіңірген еңбегі үшін төс белгісімен марапатталған','Награждён нагрудным знаком за заслуги перед Шуским районом'],
+'about.ribbon':['2010 жылдан бері','с 2010 года'],
+'about.badge':['мамандық<br>бойынша оқыту','специальностей<br>обучения'],
+'prof.eyebrow':['Мамандықтар','Специальности'],
+'prof.h2':['Колледж 5 мамандық бойынша білім береді','Колледж ведёт обучение по 5 специальностям'],
+'prof.p':['9 және 11 сынып негізінде күндізгі оқу. Бітірген соң — мемлекеттік диплом мен сұранысқа ие біліктілік.','Дневная форма обучения на базе 9 и 11 классов. Государственный диплом и востребованная квалификация по окончании.'],
+'prof.form':['<b>Оқу нысаны:</b> күндізгі','<b>Форма обучения:</b> дневная'],
+'prof.term':['<b>Оқу мерзімі:</b>','<b>Срок обучения:</b>'],
+'term.9-3':['9 сынып — 3 ж. 10 ай','9 класс — 3 г. 10 мес.'],
+'term.11-2':['11 сынып — 2 ж. 10 ай','11 класс — 2 г. 10 мес.'],
+'term.9-2':['9 сынып — 2 ж. 10 ай','9 класс — 2 г. 10 мес.'],
+'term.11-1':['11 сынып — 1 ж. 10 ай','11 класс — 1 г. 10 мес.'],
+'qual.lbl':['Біліктілік','Квалификация'],
+'prof1.h3':['Темір жолдың жылжымалы құрамын пайдалану, жөндеу және техникалық қызмет көрсету','Эксплуатация, ремонт и техническое обслуживание тягового подвижного состава железных дорог'],
+'prof2.h3':['Бағдарламалық қамтамасыз ету (түрлері бойынша)','Программное обеспечение (по видам)'],
+'prof3.h3':['Автоматика, телемеханика және темір жол көлігіндегі қозғалысты басқару','Автоматика, телемеханика и управление движением на железнодорожном транспорте'],
+'prof4.h3':['Дәнекерлеу ісі (түрлері бойынша)','Сварочное дело (по видам)'],
+'prof5.h3':['Электр жабдықтары (түрлері мен салалары бойынша)','Электрооборудование (по видам и отраслям)'],
+'qual1.val':['Техник-электромеханик','Техник-электромеханик'],
+'qual2.val':['Бағдарламалық қамтамасыз етуді әзірлеуші','Разработчик программного обеспечения'],
+'qual4.val':['Электргазбен дәнекерлеуші','Электрогазосварщик'],
+'qual5.val':['Электр монтёрі (түрлері мен салалары бойынша)','Электромонтёр (по видам и отраслям)'],
+'prof.sum.eyebrow':['Құрметті талапкер','Уважаемый абитуриент'],
+'prof.sum.h3':['Әрқашан сұранысқа ие мамандықты таңда','Выбирай профессию, которая всегда востребована'],
+'prof.sum.p':['Барлық мамандықтар бойынша саланың жетекші кәсіпорындарында кепілдендірілген практика мен жұмысқа орналасудың нақты мүмкіндігі бар.','Все специальности — с гарантированной практикой на ведущих предприятиях отрасли и реальной перспективой трудоустройства.'],
+'prof.sum.btn':['Құжат тапсыру','Подать документы'],
+'doc.eyebrow':['Ресми ақпарат','Официальная информация'],
+'doc.h3':['Мамандықтар мен біліктіліктер тізбесі','Перечень специальностей и квалификаций'],
+'doc.p':['Колледж мамандықтарының кодтары, оқу нысандары мен нормативтік мерзімдері көрсетілген толық ресми тізім — талапкерлерге арналған қабылдау құжаттамасындағыдай.','Полный официальный список специальностей колледжа с кодами, формами и нормативными сроками обучения — как в приёмной документации для абитуриентов.'],
+'doc.btn':['Толық құжатты ашу','Открыть полный документ'],
+'adv.eyebrow':['Артықшылықтар','Почему мы'],
+'adv.h2':['Колледжде оқудың артықшылықтары','Преимущества обучения в колледже'],
+'adv.p':['«Жұмысшы мамандықтар жылы» мемлекеттік бастамасы аясында колледж кадрлар даярлауды және жұмыс берушілермен өзара іс-қимылды күшейтуде.','В рамках государственной инициативы «Год рабочих профессий» колледж усиливает подготовку кадров и взаимодействие с работодателями.'],
+'adv1.h3':['Дуалды оқыту','Дуальное обучение'],
+'adv1.p':['Дуалды оқыту ауқымын кеңейтудеміз — студенттердің кәсіби дайындығы ірі өндіріс ошақтарында өтеді.','Расширяем формат дуального обучения — профессиональная подготовка студентов проходит на крупных производственных площадках.'],
+'adv2.h3':['Тәжірибелі ұстаздар','Опытные наставники'],
+'adv2.p':['Заманауи кабинеттер мен зертханалар, тәжірибелік сабақтар және өндірістік практика нағыз кәсіби дағдыларды қалыптастырады.','Современные кабинеты и лаборатории, практические занятия и производственная практика формируют реальные профессиональные навыки.'],
+'adv3.h3':['Өндіріспен байланыс','Связь с производством'],
+'adv3.p':['Саланың жетекші кәсіпорындарымен меморандумдар жасалған. Студенттер теорияны тәжірибемен ұштастырып, шеберліктерін шыңдайды.','Меморандумы с ведущими предприятиями отрасли. Студенты соединяют теорию с практикой и оттачивают мастерство.'],
+'adv4.h3':['Жұмысқа орналасу','Трудоустройство'],
+'adv4.p':['Кәсіпорындармен серіктестік түлектердің алған мамандығы бойынша тұрақты жұмысқа орналасуына жол ашады.','Партнёрство с предприятиями открывает путь к стабильному трудоустройству выпускников по полученной специальности.'],
+'part.eyebrow':['Колледж серіктестері','Партнёры колледжа'],
+'part.h2':['Студенттеріміз практикадан өтетін орындар','Где наши студенты проходят практику'],
+'part.p':['Осы кәсіпорындармен ынтымақтастық туралы меморандумдар жасалған — студенттер теорияны нақты өндірісте бекітеді.','С этими предприятиями заключены меморандумы о сотрудничестве — студенты закрепляют теорию на реальном производстве.'],
+'part.1':['Шу локомотив жөндеу зауыты — «Қамқор локомотив» ЖШС','Шуский локомотиворемонтный завод «Қамқор локомотив» ЖШС'],
+'part.2':['Шу байланыс белгі беру дистанциясы','Шуская дистанция сигнализации и связи'],
+'part.3':['Шу электродистанциясы','Шуская электродистанция'],
+'part.4':['№ 27 пайдалану вагон депосы','Вагонное депо эксплуатации № 27'],
+'part.5':['«Автожүккөлік» ЖШС','«Автожүккөлік» ЖШС'],
+'part.6':['«ХИМ-плюс» ЖШС','«ХИМ-плюс» ЖШС'],
+'part.7':['ALSTOM — «ЭКЗ Сервис» ЖШС','ALSTOM — «ЭКЗ Сервис» ЖШС'],
+'part.8':['Серіктестер қатарын үнемі кеңейтудеміз','Постоянно расширяем число партнёров'],
+'ach.eyebrow':['Жетістіктер','Достижения'],
+'ach.h2':['Студенттеріміз — кәсіби чемпионаттардың жүлдегерлері','Наши студенты — призёры профессиональных чемпионатов'],
+'ach.p':['WorldSkills, TEMIRSKILLS және Profi облыстық және республикалық кәсіби шеберлік байқауларындағы жеңістер.','Победы на областных и республиканских конкурсах профессионального мастерства WorldSkills, TEMIRSKILLS и Profi.'],
+'ach1.yr':['WorldSkills · 2025 · облыс','WorldSkills · 2025 · область'],
+'ach1.h4':['Дәнекерлеу ісі және электр жабдықтары','Сварочное дело и электрооборудование'],
+'ach1.p':['«Дәнекерлеу ісі» бойынша қатысушылар — <b>Щевцов Владислав</b>, <b>Сейткерім Ерасыл</b>. «Электр жабдықтары» бойынша <b>Ларионов Сергей</b> — <b>ІІІ орын</b>.','Участники по «Сварочному делу» — <b>Щевцов Владислав</b>, <b>Сейткерім Ерасыл</b>. По «Электрооборудованию» <b>Ларионов Сергей</b> — <b>III место</b>.'],
+'ach2.yr':['TEMIRSKILLS · 2025 · облыс','TEMIRSKILLS · 2025 · область'],
+'ach2.h4':['1–2 курс студенттері арасындағы байқау','Конкурс среди студентов 1–2 курсов'],
+'ach2.p':['«Дәнекерлеу ісі» мамандығы бойынша <b>Попович Илья</b> қатысты.','По специальности «Сварочное дело» участвовал <b>Попович Илья</b>.'],
+'ach3.yr':['Profi · 2026','Profi · 2026'],
+'ach3.h4':['Колледждің екі бірінші орны','Два первых места колледжа'],
+'ach3.p':['«Дәнекерлеу ісі» — <b>Попович Илья, І орын</b>. «Электр жабдықтары» — <b>Атаев Мадияр, І орын</b>.','«Сварочное дело» — <b>Попович Илья, I место</b>. «Электрооборудование» — <b>Атаев Мадияр, I место</b>.'],
+'ach4.yr':['WorldSkills Jambyl · 2026 · облыс','WorldSkills Jambyl · 2026 · область'],
+'ach4.h4':['Чемпионат марапаттары','Награды чемпионата'],
+'ach4.p':['«Теміржол локомотивін басқару» — <b>Дихан Азатбек</b>, <b>Батырхан Әкежан</b>; ІІ орын — <b>Жансерік Адембек</b>, <b>Парбузин Сергей</b>. «Электромонтаж жұмыстары» — <b>Атаев Мадияр</b>. «Дәнекерлеу технологиялары» — <b>Попович Илья</b>. Ұйымдастыруға қосқан үлесі үшін — <b>Қаламбек Жанерке</b>.','«Управление ж/д локомотивом» — <b>Дихан Азатбек</b>, <b>Батырхан Әкежан</b>; II место — <b>Жансерік Адембек</b>, <b>Парбузин Сергей</b>. «Электромонтажные работы» — <b>Атаев Мадияр</b>. «Технологии сварки» — <b>Попович Илья</b>. За вклад в организацию — <b>Қаламбек Жанерке</b>.'],
+'gal.eyebrow':['Галерея','Галерея'],
+'gal.h2':['Колледждегі өмір мен практика','Жизнь и практика в колледже'],
+'gal.p':['Өндірістік практика, оқу сабақтары және темір жолдың нақты нысандарындағы жұмыс.','Производственная практика, учебные занятия и работа на реальных объектах железной дороги.'],
+'cta.eyebrow':['Талапкерлерді қабылдау','Приём абитуриентов'],
+'cta.h2':['<em>Шу темір жол колледжінің</em> бір бөлігі бол','Стань частью <em>Шу темір жол колледжі</em>'],
+'cta.p':['Құрметті талапкер! Сұранысқа ие мамандықты меңгеруге кел. Қабылдау 9 және 11 сынып негізінде күндізгі оқу нысанына жүргізіледі.','Уважаемый абитуриент! Приходи учиться востребованной профессии. Приём ведётся на базе 9 и 11 классов на дневную форму обучения.'],
+'cta.note1':['<b>9 сынып негізінде</b> — толық орта білім + мамандық<br><span style="opacity:.85;font-size:.92rem">11 сынып негізінде — жеделдетілген оқу мерзімі</span>','<b>На базе 9 классов</b> — полное среднее + специальность<br><span style="opacity:.85;font-size:.92rem">На базе 11 классов — ускоренные сроки обучения</span>'],
+'cta.note2':['<b>Мемлекеттік диплом</b><br><span style="opacity:.85;font-size:.92rem">Лицензия №KP00006513</span>','<b>Государственный диплом</b><br><span style="opacity:.85;font-size:.92rem">Лицензия №KP00006513</span>'],
+'cc.h3':['Қабылдау комиссиясының байланыстары','Контакты приёмной комиссии'],
+'cc.lic':['Шу қаласы · Мемлекеттік лицензия №KP00006513','г. Шу · Государственная лицензия №KP00006513'],
+'cc.addr.k':['Мекенжай','Адрес'],
+'cc.addr.v':['Шу қаласы, Автобазовская көшесі, №2Б','г. Шу, ул. Автобазовская, №2Б'],
+'cc.tel.k':['Телефондар','Телефоны'],
+'cc.site.k':['Сайт · Instagram','Сайт · Instagram'],
+'cc.btn':['Қабылдау комиссиясына қоңырау шалу','Позвонить в приёмную комиссию'],
+'foot.p':['2010 жылдан бері Қазақстанның темір жол көлігіне білікті, бәсекеге қабілетті мамандар даярлаймыз.','Подготовка квалифицированных и конкурентоспособных специалистов для железнодорожного транспорта Казахстана с 2010 года.'],
+'foot.nav':['Бөлімдер','Навигация'],
+'foot.contacts':['Байланыс','Контакты'],
+'foot.copy':['© 2026 Шу темір жол колледжі. Барлық құқықтар қорғалған.','© 2026 Шу темір жол колледжі. Все права защищены.'],
+'foot.lic':['Мемлекеттік лицензия №KP00006513','Государственная лицензия №KP00006513']
+};
+
+const langSwitch=document.getElementById('langSwitch');
+function setLang(l){
+  const i=l==='ru'?1:0;
+  localStorage.setItem('lang',l);
+  document.documentElement.lang=l==='ru'?'ru':'kk';
+  document.title=T['meta.title'][i];
+  document.querySelector('meta[name="description"]').setAttribute('content',T['meta.desc'][i]);
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[k])el.innerHTML=T[k][i];
+  });
+  langSwitch.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+}
+langSwitch.addEventListener('click',e=>{
+  const b=e.target.closest('button');
+  if(b)setLang(b.dataset.lang);
+});
+const saved=localStorage.getItem('lang');
+if(saved==='ru')setLang('ru');
+
 // Header scroll state
 const hdr=document.getElementById('hdr');
 const onScroll=()=>hdr.classList.toggle('scrolled',window.scrollY>40);
